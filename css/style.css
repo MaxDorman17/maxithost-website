@@ -298,6 +298,43 @@ p {
     margin-bottom: 0;
 }
 
+/* Six-column features grid */
+.features--six {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* What's Not Included section */
+.not-included {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: var(--gray-50);
+    border-radius: var(--radius);
+    padding: 2rem;
+    border: 1px solid var(--gray-200);
+}
+
+.not-included-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.not-included-list li {
+    position: relative;
+    padding-left: 1.75rem;
+    color: var(--gray-600);
+}
+
+.not-included-list li::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    color: var(--gray-400);
+    font-weight: 600;
+}
+
 /* ==================== STEPS ==================== */
 .steps {
     display: grid;
@@ -455,6 +492,54 @@ p {
 .pricing-card .btn {
     width: 100%;
     margin-top: 1rem;
+}
+
+/* Pricing badge (accessible alternative to ::before) */
+.pricing-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--orange);
+    color: var(--white);
+    padding: 0.25rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Price caption for featured plan */
+.price-caption {
+    color: var(--gray-600);
+    font-size: 0.875rem;
+    margin: -0.5rem 0 1rem;
+    font-style: italic;
+}
+
+/* Fine print text */
+.fine-print {
+    font-size: 0.8125rem;
+    color: var(--gray-500);
+    margin: 0.75rem 0;
+    text-align: left;
+    line-height: 1.5;
+}
+
+/* Enhanced featured card styling */
+.pricing-card--featured {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15), var(--shadow-lg);
+    position: relative;
+}
+
+.pricing-card--featured:hover {
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.25), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Remove ::before badge from featured card since we use explicit badge */
+.pricing-card--featured::before {
+    display: none;
 }
 
 /* ==================== INFO BOX ==================== */
@@ -712,12 +797,18 @@ tr:last-child td {
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 968px) {
     .features,
+    .features--six,
     .steps,
     .pricing-grid {
         grid-template-columns: 1fr;
         max-width: 500px;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .features--six {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 700px;
     }
 
     .two-col {
@@ -805,5 +896,95 @@ tr:last-child td {
     .btn--large {
         padding: 0.875rem 1.5rem;
         font-size: 1rem;
+    }
+
+    .features--six {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+
+    .not-included {
+        padding: 1.5rem;
+    }
+}
+
+/* ==================== CONTACT FORM ==================== */
+.contact-form-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    background-color: var(--white);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gray-200);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+}
+
+.form-group .required {
+    color: var(--orange);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-family: inherit;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius);
+    background-color: var(--white);
+    color: var(--gray-700);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form .btn {
+    width: 100%;
+}
+
+@media (max-width: 480px) {
+    .contact-form {
+        padding: 1.5rem;
     }
 }
