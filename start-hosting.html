@@ -6,6 +6,112 @@
     <meta name="description" content="Start hosting with MaxitHost. Fill in your details and we'll onboard your site manually. Most sites are live within 1 business day.">
     <title>Start hosting with MaxiHost</title>
     <link rel="stylesheet" href="/css/style.css?v=20260123">
+    <style>
+        /* Onboarding page layout */
+        .onboarding-layout {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .onboarding-form-col {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-200);
+        }
+
+        .onboarding-help-col {
+            position: sticky;
+            top: 100px;
+        }
+
+        .help-panel {
+            background-color: var(--gray-50);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border: 1px solid var(--gray-200);
+        }
+
+        /* Collapsible sections */
+        .collapsible {
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .collapsible:last-child {
+            border-bottom: none;
+        }
+
+        .collapsible-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 1rem 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--navy);
+            text-align: left;
+        }
+
+        .collapsible-toggle:hover {
+            color: var(--blue);
+        }
+
+        .collapsible-icon {
+            transition: transform 0.2s;
+            color: var(--gray-400);
+        }
+
+        .collapsible-toggle[aria-expanded="true"] .collapsible-icon {
+            transform: rotate(180deg);
+        }
+
+        .collapsible-content {
+            display: none;
+            padding-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .collapsible-content.open {
+            display: block;
+        }
+
+        .collapsible-content p {
+            margin-bottom: 0.75rem;
+        }
+
+        .collapsible-content ul {
+            margin-bottom: 0.75rem;
+            padding-left: 1.25rem;
+        }
+
+        .collapsible-content li {
+            margin-bottom: 0.25rem;
+        }
+
+        /* Mobile: stack vertically */
+        @media (max-width: 900px) {
+            .onboarding-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .onboarding-help-col {
+                position: static;
+                order: 2;
+            }
+
+            .onboarding-form-col {
+                order: 1;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -41,67 +147,38 @@
         </div>
     </section>
 
-    <!-- What Happens Next & What You'll Need -->
-    <section class="section">
+    <!-- Trust Summary -->
+    <section class="section" style="padding: 2rem 0; background-color: var(--gray-50); border-bottom: 1px solid var(--gray-200);">
         <div class="container">
-            <div class="two-col">
-                <div class="card">
-                    <h3>What happens next</h3>
-                    <ul>
-                        <li>You submit your details</li>
-                        <li>You complete secure checkout</li>
-                        <li>We onboard your site manually</li>
-                        <li>We confirm when your site is live</li>
-                    </ul>
+            <div style="display: flex; flex-wrap: wrap; gap: 3rem; justify-content: center; text-align: center;">
+                <div>
+                    <h4 style="margin-bottom: 0.75rem; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500);">How onboarding works</h4>
+                    <p style="margin: 0; font-size: 0.9rem; color: var(--gray-700);">Submit your details &rarr; Complete secure checkout &rarr; We onboard your site &rarr; We confirm when it's live</p>
                 </div>
-                <div class="card">
-                    <h3>What you'll need</h3>
-                    <ul>
-                        <li>Your domain (or a subdomain request)</li>
-                        <li>Your website files or GitHub repository</li>
-                        <li>Any special notes or requirements</li>
-                    </ul>
+                <div>
+                    <h4 style="margin-bottom: 0.75rem; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-500);">You'll need</h4>
+                    <p style="margin: 0; font-size: 0.9rem; color: var(--gray-700);">A domain or subdomain &bull; A GitHub repository or a ZIP/download link</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Important Note -->
+    <!-- Main Content: Form + Instructions -->
     <section class="section">
         <div class="container">
-            <div class="contact-form-wrapper">
-                <div style="background-color: #fef3c7; border: 1px solid #f59e0b; border-radius: 8px; padding: 1.5rem;">
-                    <p style="margin: 0;"><strong>Important:</strong> This page is for new hosting customers.<br>
-                    If you have questions before signing up, please use the <a href="contact.html">contact page</a>.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="onboarding-layout">
+                <!-- Left Column: Form -->
+                <div class="onboarding-form-col">
+                    <!-- Important Note -->
+                    <div style="background-color: #fef3c7; border: 1px solid #f59e0b; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.5rem;">
+                        <p style="margin: 0; font-size: 0.9rem;"><strong>Important:</strong> This page is for new hosting customers.<br>
+                        If you have questions before signing up, please use the <a href="contact.html">contact page</a>.</p>
+                    </div>
 
-    <!-- Before You Start -->
-    <section class="section section--gray">
-        <div class="container">
-            <div class="contact-form-wrapper">
-                <h2>Before you start</h2>
-                <p>To help us onboard your site smoothly, please have one of the following ready:</p>
-                <p><strong>GitHub (recommended)</strong><br>
-                A link to your repository, with the production branch (usually <code>main</code>).</p>
-                <p><strong>ZIP file or download link</strong><br>
-                A ZIP of your website files, or a link via Google Drive, Dropbox, or similar.</p>
-                <p><strong>Not sure which to choose?</strong><br>
-                That's fine — just tell us in the notes and we'll help.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Onboarding Form -->
-    <section class="section">
-        <div class="container">
-            <div class="contact-form-wrapper">
-                <h2 class="text-center mb-3">Start your onboarding</h2>
+                    <h2 class="mb-3">Start your onboarding</h2>
 
                 <!-- Success Message (hidden by default) -->
-                <div id="form-success" style="display: none; background-color: var(--white); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow); border: 1px solid var(--gray-200);">
+                <div id="form-success" style="display: none;">
                     <h3 style="color: var(--navy); margin-bottom: 1rem;">Request received</h3>
                     <p>Thanks — we've received your onboarding details.</p>
                     <p style="margin-bottom: 0.5rem;"><strong>Send your website:</strong></p>
@@ -201,6 +278,62 @@
                         <button type="submit" class="btn btn--primary btn--large">Submit onboarding request</button>
                     </div>
                 </form>
+                </div>
+
+                <!-- Right Column: Instructions -->
+                <div class="onboarding-help-col">
+                    <div class="help-panel">
+                        <h4 style="margin-bottom: 1rem; color: var(--gray-500); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Need help?</h4>
+
+                        <!-- Collapsible: Before you start -->
+                        <div class="collapsible">
+                            <button class="collapsible-toggle" type="button" aria-expanded="false">
+                                <span>Before you start</span>
+                                <svg class="collapsible-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <div class="collapsible-content">
+                                <p>To help us onboard your site smoothly, please have one of the following ready:</p>
+                                <p><strong>GitHub (recommended)</strong><br>
+                                A link to your repository, with the production branch (usually <code>main</code>).</p>
+                                <p><strong>ZIP file or download link</strong><br>
+                                A ZIP of your website files, or a link via Google Drive, Dropbox, or similar.</p>
+                                <p><strong>Not sure which to choose?</strong><br>
+                                That's fine — just tell us in the notes and we'll help.</p>
+                            </div>
+                        </div>
+
+                        <!-- Collapsible: How to provide a download link -->
+                        <div class="collapsible">
+                            <button class="collapsible-toggle" type="button" aria-expanded="false">
+                                <span>How to provide a download link</span>
+                                <svg class="collapsible-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <div class="collapsible-content">
+                                <p><strong>Providing your website via download link</strong></p>
+                                <p>If you're not using GitHub, you can send your website as a ZIP file using a download link.</p>
+                                <p><strong>Step 1:</strong><br>
+                                Zip your website files into a single .zip file.</p>
+                                <p><strong>Step 2:</strong><br>
+                                Upload the ZIP to one of the following:</p>
+                                <ul>
+                                    <li>Google Drive</li>
+                                    <li>Dropbox</li>
+                                    <li>OneDrive</li>
+                                    <li>WeTransfer</li>
+                                </ul>
+                                <p><strong>Step 3:</strong><br>
+                                Make sure the link is set to "Anyone with the link can view/download".</p>
+                                <p><strong>Step 4:</strong><br>
+                                Paste the link into the Download link field on the form, or email it to <a href="mailto:onboarding@maxithost.co.uk">onboarding@maxithost.co.uk</a>.</p>
+                                <p>That's it — we'll take it from there.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -232,6 +365,14 @@
                             <li><a href="contact.html">Contact</a></li>
                         </ul>
                     </div>
+                    <div>
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="terms.html">Terms</a></li>
+                            <li><a href="privacy.html">Privacy</a></li>
+                            <li><a href="cookies.html">Cookies</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -244,6 +385,17 @@
         // Mobile navigation toggle
         document.querySelector('.nav-toggle').addEventListener('click', function() {
             document.querySelector('.nav').classList.toggle('active');
+        });
+
+        // Collapsible sections
+        document.querySelectorAll('.collapsible-toggle').forEach(function(toggle) {
+            toggle.addEventListener('click', function() {
+                var expanded = this.getAttribute('aria-expanded') === 'true';
+                var content = this.nextElementSibling;
+
+                this.setAttribute('aria-expanded', !expanded);
+                content.classList.toggle('open');
+            });
         });
 
         // Onboarding form submission
