@@ -169,6 +169,17 @@ p {
     text-decoration: none;
 }
 
+.nav-cta {
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+}
+
+.nav-cta:hover,
+.nav-cta:active {
+    color: var(--white);
+}
+
 .nav-toggle {
     display: none;
     background: none;
@@ -855,6 +866,12 @@ tr:last-child td {
     .nav a {
         padding: 0.75rem 1rem;
         display: block;
+    }
+
+    .nav-cta {
+        margin: 0.5rem 1rem;
+        margin-left: 1rem;
+        text-align: center;
     }
 
     .nav-toggle {
