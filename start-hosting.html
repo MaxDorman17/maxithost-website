@@ -41,31 +41,27 @@
         </div>
     </section>
 
-    <!-- What Happens Next -->
+    <!-- What Happens Next & What You'll Need -->
     <section class="section">
         <div class="container">
-            <div class="contact-form-wrapper">
-                <h2>What happens next</h2>
-                <ul>
-                    <li>You submit your details</li>
-                    <li>You complete secure checkout</li>
-                    <li>We onboard your site manually</li>
-                    <li>We confirm when your site is live</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- What You'll Need -->
-    <section class="section section--gray">
-        <div class="container">
-            <div class="contact-form-wrapper">
-                <h2>What you'll need</h2>
-                <ul>
-                    <li>Your domain (or a subdomain request)</li>
-                    <li>Your website files or GitHub repository</li>
-                    <li>Any special notes or requirements</li>
-                </ul>
+            <div class="two-col">
+                <div class="card">
+                    <h3>What happens next</h3>
+                    <ul>
+                        <li>You submit your details</li>
+                        <li>You complete secure checkout</li>
+                        <li>We onboard your site manually</li>
+                        <li>We confirm when your site is live</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>What you'll need</h3>
+                    <ul>
+                        <li>Your domain (or a subdomain request)</li>
+                        <li>Your website files or GitHub repository</li>
+                        <li>Any special notes or requirements</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -82,13 +78,129 @@
         </div>
     </section>
 
-    <!-- Onboarding Form Placeholder -->
+    <!-- Before You Start -->
     <section class="section section--gray">
         <div class="container">
             <div class="contact-form-wrapper">
-                <div style="background-color: #e5e7eb; border: 2px dashed #9ca3af; border-radius: 8px; padding: 3rem; text-align: center;">
-                    <p style="margin: 0; color: #6b7280; font-size: 1.125rem;">Onboarding form will go here</p>
+                <h2>Before you start</h2>
+                <p>To help us onboard your site smoothly, please have one of the following ready:</p>
+                <p><strong>GitHub (recommended)</strong><br>
+                A link to your repository, with the production branch (usually <code>main</code>).</p>
+                <p><strong>ZIP file or download link</strong><br>
+                A ZIP of your website files, or a link via Google Drive, Dropbox, or similar.</p>
+                <p><strong>Not sure which to choose?</strong><br>
+                That's fine — just tell us in the notes and we'll help.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Onboarding Form -->
+    <section class="section">
+        <div class="container">
+            <div class="contact-form-wrapper">
+                <h2 class="text-center mb-3">Start your onboarding</h2>
+
+                <!-- Success Message (hidden by default) -->
+                <div id="form-success" style="display: none; background-color: var(--white); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow); border: 1px solid var(--gray-200);">
+                    <h3 style="color: var(--navy); margin-bottom: 1rem;">Request received</h3>
+                    <p>Thanks — we've received your onboarding details.</p>
+                    <p style="margin-bottom: 0.5rem;"><strong>Send your website:</strong></p>
+                    <ul style="margin-bottom: 0;">
+                        <li><strong>GitHub:</strong> reply with the repo link and confirm the branch is <code>main</code></li>
+                        <li><strong>ZIP:</strong> email it to <a href="mailto:onboarding@maxithost.co.uk">onboarding@maxithost.co.uk</a> or send a download link</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">Most sites are live within 1 business day.</p>
+
+                    <!-- Payment Section -->
+                    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--gray-200);">
+                        <h4 style="color: var(--navy); margin-bottom: 0.5rem;">Next step: payment</h4>
+                        <p style="margin-bottom: 1.5rem;">To start hosting, complete payment using our secure checkout:</p>
+
+                        <!-- Single button for known plan -->
+                        <div id="payment-single" style="display: none;">
+                            <a id="payment-btn" href="#" class="btn btn--primary btn--large">Continue to secure checkout</a>
+                        </div>
+
+                        <!-- All buttons fallback -->
+                        <div id="payment-all" style="display: none;">
+                            <a href="https://buy.stripe.com/00w00lfKa8IYdeT6Fy2Fa02" class="btn btn--primary" style="margin-right: 0.5rem; margin-bottom: 0.5rem;">Pay for Starter</a>
+                            <a href="https://buy.stripe.com/bJe9AVapQ3oE2Af4xq2Fa01" class="btn btn--primary" style="margin-right: 0.5rem; margin-bottom: 0.5rem;">Pay for Professional</a>
+                            <a href="https://buy.stripe.com/7sY3cxdC23oEdeTe802Fa00" class="btn btn--primary" style="margin-bottom: 0.5rem;">Pay for Managed</a>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Onboarding Form -->
+                <form id="onboarding-form" action="FORM_ENDPOINT_HERE" method="POST" class="contact-form">
+                    <!-- Hidden fields -->
+                    <input type="text" name="_gotcha" style="display: none;" tabindex="-1" autocomplete="off">
+                    <input type="hidden" name="_subject" value="New Hosting Onboarding — MaxiHost">
+                    <input type="hidden" name="source_page" value="/start-hosting">
+
+                    <!-- Error message -->
+                    <div id="form-error" style="display: none; color: #dc2626; background-color: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem;"></div>
+
+                    <!-- Required fields -->
+                    <div class="form-group">
+                        <label for="full_name">Full name <span class="required">*</span></label>
+                        <input type="text" id="full_name" name="full_name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="plan">Hosting plan <span class="required">*</span></label>
+                        <select id="plan" name="plan" required>
+                            <option value="">Please select...</option>
+                            <option value="Starter">Starter</option>
+                            <option value="Professional">Professional</option>
+                            <option value="Managed">Managed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="domain">Domain or subdomain request <span class="required">*</span></label>
+                        <input type="text" id="domain" name="domain" required placeholder="e.g. example.com or mysite.maxithost.co.uk">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="delivery_method">Delivery method <span class="required">*</span></label>
+                        <select id="delivery_method" name="delivery_method" required>
+                            <option value="">Please select...</option>
+                            <option value="GitHub">GitHub</option>
+                            <option value="ZIP/Download link">ZIP/Download link</option>
+                            <option value="Migration">Migration</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Notes / special requirements <span class="required">*</span></label>
+                        <textarea id="notes" name="notes" rows="4" required placeholder="Any specific requirements, build commands, or notes for setup"></textarea>
+                    </div>
+
+                    <!-- Optional fields -->
+                    <div class="form-group">
+                        <label for="github_repo_url">GitHub repository URL</label>
+                        <input type="text" id="github_repo_url" name="github_repo_url" placeholder="https://github.com/username/repo">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="github_branch">GitHub branch</label>
+                        <input type="text" id="github_branch" name="github_branch" value="main" placeholder="main">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="download_link">Download link</label>
+                        <input type="text" id="download_link" name="download_link" placeholder="https://...">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn--primary btn--large">Submit onboarding request</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -133,6 +245,91 @@
         document.querySelector('.nav-toggle').addEventListener('click', function() {
             document.querySelector('.nav').classList.toggle('active');
         });
+
+        // Onboarding form submission
+        (function() {
+            var form = document.getElementById('onboarding-form');
+            var errorBox = document.getElementById('form-error');
+            var successBox = document.getElementById('form-success');
+
+            // Stripe payment links
+            var paymentLinks = {
+                'starter': 'https://buy.stripe.com/00w00lfKa8IYdeT6Fy2Fa02',
+                'starter hosting': 'https://buy.stripe.com/00w00lfKa8IYdeT6Fy2Fa02',
+                'professional': 'https://buy.stripe.com/bJe9AVapQ3oE2Af4xq2Fa01',
+                'professional hosting': 'https://buy.stripe.com/bJe9AVapQ3oE2Af4xq2Fa01',
+                'managed': 'https://buy.stripe.com/7sY3cxdC23oEdeTe802Fa00',
+                'multi-site': 'https://buy.stripe.com/7sY3cxdC23oEdeTe802Fa00',
+                'mult-site': 'https://buy.stripe.com/7sY3cxdC23oEdeTe802Fa00',
+                'multisite': 'https://buy.stripe.com/7sY3cxdC23oEdeTe802Fa00',
+                'multi site': 'https://buy.stripe.com/7sY3cxdC23oEdeTe802Fa00'
+            };
+
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    // Capture selected plan before submission (normalised)
+                    var planSelect = document.getElementById('plan');
+                    var selectedPlan = planSelect ? planSelect.value.trim().toLowerCase() : '';
+
+                    // Hide any previous error
+                    errorBox.style.display = 'none';
+                    errorBox.textContent = '';
+
+                    // Disable submit button during request
+                    var submitBtn = form.querySelector('button[type="submit"]');
+                    var originalText = submitBtn.textContent;
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Submitting...';
+
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(function(response) {
+                        if (response.ok) {
+                            // Success - hide form and show success message
+                            form.style.display = 'none';
+                            successBox.style.display = 'block';
+
+                            // Show appropriate payment button(s)
+                            var singleContainer = document.getElementById('payment-single');
+                            var allContainer = document.getElementById('payment-all');
+                            var paymentBtn = document.getElementById('payment-btn');
+
+                            if (selectedPlan && paymentLinks[selectedPlan]) {
+                                // Show single button for selected plan
+                                paymentBtn.href = paymentLinks[selectedPlan];
+                                singleContainer.style.display = 'block';
+                            } else {
+                                // Show all buttons as fallback
+                                allContainer.style.display = 'block';
+                            }
+
+                            // Scroll to success message
+                            successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        } else {
+                            // Server error
+                            return response.json().then(function(data) {
+                                throw new Error(data.error || 'Something went wrong.');
+                            });
+                        }
+                    })
+                    .catch(function(error) {
+                        // Show error message
+                        errorBox.innerHTML = 'Something went wrong — please try again or email <a href="mailto:onboarding@maxithost.co.uk">onboarding@maxithost.co.uk</a>.';
+                        errorBox.style.display = 'block';
+                        // Re-enable submit button
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalText;
+                    });
+                });
+            }
+        })();
     </script>
 </body>
 </html>
