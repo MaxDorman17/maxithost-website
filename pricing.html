@@ -36,6 +36,13 @@
         <div class="container">
             <h1>Simple, Transparent Pricing</h1>
             <p>No hidden fees. No surprise charges. Just reliable managed hosting at a fair price.</p>
+            <p style="max-width: 720px; margin: 1rem auto 0;">
+                <strong>Static Website Hosting</strong> — optimised for sites built with HTML, CSS, and JavaScript.
+                Perfect for brochure sites, portfolios, and landing pages. <strong>No databases or server-side apps.</strong>
+            </p>
+            <p style="max-width: 720px; margin: 0.75rem auto 0;">
+                <strong>You always own your domain.</strong> We never take ownership of customer domains and there’s no lock-in.
+            </p>
         </div>
     </section>
 
@@ -47,12 +54,12 @@
                 <div class="pricing-card">
                     <h3>Starter</h3>
                     <div class="price">£15<span>/month</span></div>
-                    <p class="description">Perfect for personal sites and small projects.</p>
+                    <p class="description">Perfect for personal sites, portfolios, and small projects.</p>
                     <ul>
                         <li>1 static website</li>
                         <li>Free maxihost.co.uk subdomain</li>
                         <li>Automatic HTTPS (SSL)</li>
-                        <li>Automated backups (basic retention)</li>
+                        <li>Automated file backups (basic retention)</li>
                         <li>Email support</li>
                         <li>Isolated container hosting</li>
                     </ul>
@@ -62,18 +69,18 @@
                     <p class="fine-print text-center">Cancel anytime with 30 days' notice.</p>
                 </div>
 
-                <!-- Professional (formerly Business) -->
+                <!-- Professional -->
                 <div class="pricing-card pricing-card--featured">
                     <span class="pricing-badge" aria-label="Most Popular">Most Popular</span>
                     <h3>Professional</h3>
                     <div class="price">£25<span>/month</span></div>
                     <p class="price-caption">Recommended for business websites</p>
-                    <p class="description">For businesses that need their own domain and reliable hosting.</p>
+                    <p class="description">For businesses using their own domain who want managed, reliable hosting.</p>
                     <ul>
                         <li>1 static website</li>
-                        <li>Your own custom domain</li>
+                        <li>Use your own custom domain</li>
                         <li>Automatic HTTPS (SSL)</li>
-                        <li>Automated backups (extended retention)</li>
+                        <li>Automated file backups (extended retention)</li>
                         <li>Priority email support</li>
                         <li>Isolated container hosting</li>
                     </ul>
@@ -87,12 +94,12 @@
                 <div class="pricing-card">
                     <h3>Multi-Site</h3>
                     <div class="price">£60<span>/month</span></div>
-                    <p class="description">For businesses managing multiple websites.</p>
+                    <p class="description">For agencies or businesses managing multiple static websites.</p>
                     <ul>
                         <li>Up to 5 static websites</li>
                         <li>Custom domains for each site</li>
                         <li>Automatic HTTPS (SSL)</li>
-                        <li>Automated backups (extended retention)</li>
+                        <li>Automated file backups (extended retention)</li>
                         <li>Priority email support</li>
                         <li>Isolated container hosting</li>
                     </ul>
@@ -102,11 +109,53 @@
                     <p class="fine-print text-center">Cancel anytime with 30 days' notice.</p>
                 </div>
             </div>
+
+            <!-- Domain note under the cards -->
+            <div style="max-width: 900px; margin: 2rem auto 0; text-align: center;">
+                <p style="margin: 0;">
+                    <strong>Don’t have a domain yet?</strong><br>
+                    Start with a free <strong>maxihost.co.uk</strong> subdomain, or use your own domain when you’re ready — we’re happy to help either way.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Getting Started / Onboarding -->
+    <section class="section section--gray">
+        <div class="container">
+            <h2 class="text-center mb-3">Getting Started is Simple</h2>
+            <div class="features features--six">
+                <div class="feature">
+                    <h3>1) Choose a Plan</h3>
+                    <p>Pick the plan that matches your site and support needs.</p>
+                </div>
+                <div class="feature">
+                    <h3>2) Send Your Website</h3>
+                    <p>Share a GitHub repo or send a ZIP file. We can help you get it ready.</p>
+                </div>
+                <div class="feature">
+                    <h3>3) Go Live with HTTPS</h3>
+                    <p>We deploy your site securely and enable HTTPS automatically.</p>
+                </div>
+                <div class="feature">
+                    <h3>Already Have a Domain?</h3>
+                    <p>Great — point your DNS to our server and we’ll handle the rest.</p>
+                </div>
+                <div class="feature">
+                    <h3>No Domain Yet?</h3>
+                    <p>Start on a free <strong>maxihost.co.uk</strong> subdomain while you choose a domain.</p>
+                </div>
+                <div class="feature">
+                    <h3>Need Updates?</h3>
+                    <p>You can deploy changes via GitHub, or email us updates (ideal for occasional changes).</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- All Plans Include -->
-    <section class="section section--gray">
+    <section class="section">
         <div class="container">
             <h2 class="text-center mb-3">All Plans Include</h2>
             <div class="features features--six">
@@ -119,8 +168,8 @@
                     <p>HTTPS is automatic and included.</p>
                 </div>
                 <div class="feature">
-                    <h3>Automated Backups</h3>
-                    <p>Your site is backed up regularly.</p>
+                    <h3>Automated File Backups</h3>
+                    <p>Regular file backups with retention based on plan.</p>
                 </div>
                 <div class="feature">
                     <h3>UK-Based Support</h3>
@@ -144,7 +193,7 @@
             <h2 class="text-center mb-3">What's Not Included</h2>
             <div class="not-included">
                 <ul class="not-included-list">
-                    <li>Website design or content changes</li>
+                    <li>Website design or content changes (unless agreed)</li>
                     <li>DNS migrations or registrar changes (unless requested)</li>
                     <li>Out-of-hours emergency work</li>
                     <li>Custom app development or databases</li>
@@ -163,30 +212,42 @@
                     <div class="faq-question">What counts as a "static website"?</div>
                     <p class="faq-answer">A static website is built with HTML, CSS, and JavaScript. It doesn't require a database or server-side processing. Most business brochure sites, portfolios, and landing pages are static.</p>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">Can you build my website for me?</div>
-                    <p class="faq-answer">We focus on hosting, not web design. However, we can recommend trusted designers if you need one.</p>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">What if I need to make changes to my site?</div>
-                    <p class="faq-answer">Email us the changes and we'll update your site. For frequent updates, we can discuss a workflow that suits you.</p>
-                </div>
+
                 <div class="faq-item">
                     <div class="faq-question">Do I keep ownership of my domain?</div>
                     <p class="faq-answer">Yes. Your domain stays registered in your name, with your registrar. We never take ownership of customer domains.</p>
                 </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What if I don’t have a domain yet?</div>
+                    <p class="faq-answer">No problem. You can start on a free maxihost.co.uk subdomain, and move to your own domain later when you're ready.</p>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How do updates work?</div>
+                    <p class="faq-answer">For occasional updates, email us your changes and we’ll deploy them. If you want more control or frequent updates, we can set you up with a GitHub workflow so you can deploy updates smoothly.</p>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Can you build my website for me?</div>
+                    <p class="faq-answer">We focus on hosting, not web design. However, we can recommend trusted designers if you need one.</p>
+                </div>
+
                 <div class="faq-item">
                     <div class="faq-question">What happens if I want to leave?</div>
                     <p class="faq-answer">We'll provide all your website files so you can move to another host. No lock-in, no exit fees.</p>
                 </div>
+
                 <div class="faq-item">
                     <div class="faq-question">Is there a long-term contract?</div>
                     <p class="faq-answer">No. All plans are month-to-month. Cancel anytime with 30 days notice.</p>
                 </div>
+
                 <div class="faq-item">
                     <div class="faq-question">Do you monitor uptime?</div>
                     <p class="faq-answer">Yes. We run external, independent uptime checks and alerts.</p>
                 </div>
+
                 <div class="faq-item">
                     <div class="faq-question">Do you offer CI/CD?</div>
                     <p class="faq-answer">Yes, as an optional add-on when it makes sense. Most static sites don't need it.</p>
