@@ -455,34 +455,29 @@
                         }
                     })
                     .then(function(response) {
-                        if (response.ok) {
-                            // Success - hide form and show success message
-                            form.style.display = 'none';
-                            successBox.style.display = 'block';
+    if (!response.ok) {
+        throw new Error('Submission failed');
+    }
 
-                            // Show appropriate payment button(s)
-                            var singleContainer = document.getElementById('payment-single');
-                            var allContainer = document.getElementById('payment-all');
-                            var paymentBtn = document.getElementById('payment-btn');
+    // SUCCESS (n8n webhook returns 200, not Formspree JSON)
+    form.style.display = 'none';
+    successBox.style.display = 'block';
 
-                            if (selectedPlan && paymentLinks[selectedPlan]) {
-                                // Show single button for selected plan
-                                paymentBtn.href = paymentLinks[selectedPlan];
-                                singleContainer.style.display = 'block';
-                            } else {
-                                // Show all buttons as fallback
-                                allContainer.style.display = 'block';
-                            }
+    // Show appropriate payment button(s)
+    var singleContainer = document.getElementById('payment-single');
+    var allContainer = document.getElementById('payment-all');
+    var paymentBtn = document.getElementById('payment-btn');
 
-                            // Scroll to success message
-                            successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        } else {
-                            // Server error
-                            return response.json().then(function(data) {
-                                throw new Error(data.error || 'Something went wrong.');
-                            });
-                        }
-                    })
+    if (selectedPlan && paymentLinks[selectedPlan]) {
+        paymentBtn.href = paymentLinks[selectedPlan];
+        singleContainer.style.display = 'block';
+    } else {
+        allContainer.style.display = 'block';
+    }
+
+    successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+})
+
                     .catch(function(error) {
                         // Show error message
                         errorBox.innerHTML = 'Something went wrong — please try again or email <a href="mailto:onboarding@MaxIThost.co.uk">onboarding@MaxIThost.co.uk</a>.';
